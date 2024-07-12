@@ -1,5 +1,3 @@
-// terraform/main.tf
-
 provider "aws" {
   region = "us-east-1"
 }
@@ -22,17 +20,17 @@ resource "aws_iam_role" "example_role" {
 }
 
 resource "aws_iam_policy" "example_policy" {
-  name = "example_policy"
+  name        = "example_policy"
   description = "A test policy"
 
   policy = jsonencode({
     Version = "2012-10-17"
     Statement = [
       {
-        Action = [
+        Effect   = "Allow"
+        Action   = [
           "ec2:Describe*"
         ]
-        Effect   = "Allow"
         Resource = "*"
       }
     ]
